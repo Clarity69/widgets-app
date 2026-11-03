@@ -5,9 +5,11 @@ Dua widget layar utama Android bergaya e-ink, tanpa internet, tanpa iklan, tanpa
 | Widget | Ukuran default | Fungsi |
 |---|---|---|
 | **Jam Dot-Matrix** | 4x2, bisa diubah horizontal dan vertikal | Jam 24 jam `HH:mm` dari grid titik 5x7 ditambah tanggal (mis. `SEL 3 NOV`). Ketuk untuk membuka aplikasi Jam. |
-| **Pencarian Google** | 4x1, bisa diubah horizontal | Kapsul berisi huruf **G**. Ketuk bilah untuk membuka Google Search, ketuk ikon kamera untuk membuka Google Lens. |
+| **Pencarian Google** | 4x1, bisa diubah horizontal | Kapsul ramping: huruf **G** di kiri, ikon mikrofon dan kamera di kanan. Ketuk bilah untuk Google Search, mikrofon untuk pencarian suara, kamera untuk Google Lens. |
 
-Palet: Ink `#111111`, Paper `#F4F1EA`, Muted `#5A5A5A`, titik mati Ink 12%, latar transparan.
+Setiap widget bisa diatur sendiri: warna, ukuran, dan elemen yang ditampilkan (lihat bagian 6).
+
+Palet default: Ink `#111111`, Paper `#F4F1EA`, Muted `#5A5A5A`, titik mati Ink 12%, latar transparan.
 
 - Package: `com.taro.inkwidgets`
 - minSdk 26, targetSdk/compileSdk 35
@@ -80,6 +82,22 @@ MIUI suka menghentikan aplikasi di latar belakang sehingga alarm per menit berhe
 
 Catatan teknis: jam memakai alarm `RTC` *exact* (izin `USE_EXACT_ALARM`) yang dijadwalkan ulang ke awal menit berikutnya. Alarm ini tidak membangunkan HP saat layar mati. Begitu layar menyala, jam langsung diperbarui. Jika exact alarm tidak diizinkan, aplikasi memakai `setWindow` dengan jendela 1 detik. Membuka aplikasi InkWidgets juga menjadwalkan ulang alarm.
 
+## 6. Mengatur warna, ukuran, dan elemen widget
+
+Layar pengaturan muncul otomatis saat widget ditambahkan. Untuk membukanya lagi:
+- buka aplikasi **InkWidgets**, lalu di bagian **Atur tampilan widget** ketuk **Atur Jam Dot-Matrix #1** dan seterusnya, atau
+- tekan lama widget lalu pilih ikon pengaturan, kalau launcher mendukungnya (Android 12+).
+
+Pratinjau di bagian atas langsung berubah. Ketuk **Simpan** untuk menerapkan ke widget. Kalau keluar tanpa menyimpan, widget memakai setelan terakhir.
+
+| | Jam Dot-Matrix | Pencarian Google |
+|---|---|---|
+| **Warna** | Preset: E-ink terang, E-ink gelap, Hitam-putih, Sepia, atau Kustom (kode hex untuk tinta, kertas, teks sekunder) | sama |
+| **Ukuran** | Ukuran jam, ukuran titik, ukuran tanggal | Tinggi bilah (32–64 dp, default 44), tebal garis tepi (0–4 dp), ukuran huruf G, ukuran ikon |
+| **Tampilkan** | Tanggal, titik mati, latar kertas di belakang jam | Huruf G, tombol mikrofon, tombol Lens, garis pemisah |
+
+Titik mati jam selalu memakai warna tinta dengan transparansi sekitar 12%.
+
 ---
 
 ## Build lokal (opsional, butuh Android SDK + JDK 17)
@@ -98,7 +116,15 @@ app/src/main/java/com/taro/inkwidgets/
 ├── DotFont.kt                  # pola titik 5x7 untuk digit 0–9
 ├── ClockRenderer.kt            # menggambar jam + tanggal ke Bitmap (Canvas)
 ├── ClockWidgetProvider.kt      # widget jam, alarm per menit, broadcast waktu/boot
-├── SearchWidgetProvider.kt     # widget pencarian Google + Lens
+├── SearchRenderer.kt           # menggambar bilah pencarian ramping ke Bitmap
+├── SearchWidgetProvider.kt     # widget pencarian Google + suara + Lens
 ├── LaunchTrampolineActivity.kt # activity transparan: coba intent satu per satu
-└── MainActivity.kt             # petunjuk + tombol pengaturan aplikasi
+├── InkTheme.kt                 # preset warna + warna kustom
+├── WidgetSettings.kt           # setelan per widget (SharedPreferences)
+├── WidgetSize.kt               # ukuran widget dp -> px
+├── ConfigUi.kt                 # komponen form pengaturan
+├── BaseConfigActivity.kt       # layar pengaturan bersama (pratinjau + simpan)
+├── ClockConfigActivity.kt      # pengaturan jam
+├── SearchConfigActivity.kt     # pengaturan bilah pencarian
+└── MainActivity.kt             # petunjuk, daftar widget, tombol pengaturan aplikasi
 ```

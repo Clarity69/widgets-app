@@ -7,12 +7,10 @@ import android.appwidget.AppWidgetProvider
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
-import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
 import android.widget.RemoteViews
 import java.util.Calendar
-import kotlin.math.roundToInt
 
 class ClockWidgetProvider : AppWidgetProvider() {
 
@@ -34,6 +32,10 @@ class ClockWidgetProvider : AppWidgetProvider() {
         newOptions: Bundle?
     ) {
         updateWidget(context, appWidgetManager, appWidgetId)
+    }
+
+    override fun onDeleted(context: Context, appWidgetIds: IntArray) {
+        SettingsStore.deleteClock(context, appWidgetIds)
     }
 
     override fun onEnabled(context: Context) {
@@ -69,9 +71,8 @@ class ClockWidgetProvider : AppWidgetProvider() {
         private const val MINUTE_MS = 60_000L
 
         /** Fallback size (dp) for a 4x2 widget when the launcher reports nothing. */
-        private const val DEFAULT_WIDTH_DP = 250
-        private const val DEFAULT_HEIGHT_DP = 110
-        private const val MAX_BITMAP_SIDE_PX = 1600
+        const val DEFAULT_WIDTH_DP = 250
+        const val DEFAULT_HEIGHT_DP = 110
 
         /** Redraw every clock widget and arm the next minute tick (or cancel if none). */
         fun updateAll(context: Context) {
@@ -88,9 +89,15 @@ class ClockWidgetProvider : AppWidgetProvider() {
         }
 
         private fun updateWidget(context: Context, manager: AppWidgetManager, appWidgetId: Int) {
-            val (widthPx, heightPx) = widgetSizePx(context, manager.getAppWidgetOptions(appWidgetId))
+            val (widthPx, heightPx) = WidgetSize.px(
+                context,
+                manager.getAppWidgetOptions(appWidgetId),
+                DEFAULT_WIDTH_DP,
+                DEFAULT_HEIGHT_DP
+            )
             val now = Calendar.getInstance()
-            val bitmap = ClockRenderer.render(context, widthPx, heightPx, now)
+            val settings = SettingsStore.loadClock(context, appWidgetId)
+            val bitmap = ClockRenderer.render(widthPx, heightPx, now, settings)
 
             val views = RemoteViews(context.packageName, R.layout.widget_clock).apply {
                 setImageViewBitmap(R.id.clock_image, bitmap)
@@ -105,32 +112,6 @@ class ClockWidgetProvider : AppWidgetProvider() {
                 )
             }
             manager.updateAppWidget(appWidgetId, views)
-        }
-
-        /** Current widget size in pixels: width/height in dp from the options, times density. */
-        private fun widgetSizePx(context: Context, options: Bundle?): Pair<Int, Int> {
-            val landscape = context.resources.configuration.orientation ==
-                Configuration.ORIENTATION_LANDSCAPE
-            // Portrait: narrowest width and tallest height; landscape: the opposite.
-            val widthDp = options?.getInt(
-                if (landscape) AppWidgetManager.OPTION_APPWIDGET_MAX_WIDTH
-                else AppWidgetManager.OPTION_APPWIDGET_MIN_WIDTH
-            ) ?: 0
-            val heightDp = options?.getInt(
-                if (landscape) AppWidgetManager.OPTION_APPWIDGET_MIN_HEIGHT
-                else AppWidgetManager.OPTION_APPWIDGET_MAX_HEIGHT
-            ) ?: 0
-
-            val density = context.resources.displayMetrics.density
-            val w = (if (widthDp > 0) widthDp else DEFAULT_WIDTH_DP) * density
-            val h = (if (heightDp > 0) heightDp else DEFAULT_HEIGHT_DP) * density
-
-            // Keep the bitmap within a sane size (RemoteViews bitmaps go through Binder).
-            val scale = minOf(1f, MAX_BITMAP_SIDE_PX / maxOf(w, h))
-            return Pair(
-                (w * scale).roundToInt().coerceAtLeast(1),
-                (h * scale).roundToInt().coerceAtLeast(1)
-            )
         }
 
         /** Arm a one-shot alarm at the start of the next minute. */

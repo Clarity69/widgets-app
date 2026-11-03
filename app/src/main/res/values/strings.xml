@@ -8,7 +8,7 @@
     <string name="preview_date">SEL 3 NOV</string>
 
     <string name="search_widget_label">Pencarian Google</string>
-    <string name="search_widget_description">Bilah pencarian Google dengan tombol Google Lens.</string>
+    <string name="search_widget_description">Bilah pencarian Google ramping dengan tombol suara dan Google Lens.</string>
     <string name="search_content_description">Cari dengan Google</string>
     <string name="lens_content_description">Buka Google Lens</string>
     <string name="search_g" translatable="false">G</string>
@@ -20,4 +20,42 @@
     <string name="main_battery_body">MIUI sering menghentikan aplikasi di latar belakang sehingga jam bisa berhenti berganti menit. Buka pengaturan aplikasi, lalu:\n• aktifkan \"Mulai otomatis\"\n• Penghemat baterai → pilih \"Tanpa batasan\"</string>
     <string name="main_open_settings">Buka pengaturan aplikasi</string>
     <string name="main_footer">Tanpa internet, tanpa iklan.</string>
+    <string name="mic_content_description">Penelusuran suara Google</string>
+
+    <!-- Main screen: widget list -->
+    <string name="main_configure_title">Atur tampilan widget</string>
+    <string name="main_configure_empty">Belum ada widget InkWidgets di layar utama. Tambahkan dulu, lalu kembali ke sini.</string>
+    <string name="main_configure_widget">Atur %1$s #%2$d</string>
+
+    <!-- Settings screens -->
+    <string name="clock_config_title">Atur Jam</string>
+    <string name="search_config_title">Atur Pencarian</string>
+    <string name="cfg_dark_backdrop">Pratinjau di latar gelap</string>
+    <string name="cfg_save">Simpan</string>
+    <string name="cfg_section_color">Warna</string>
+    <string name="cfg_section_size">Ukuran</string>
+    <string name="cfg_section_elements">Tampilkan</string>
+    <string name="theme_light">E-ink terang</string>
+    <string name="theme_dark">E-ink gelap</string>
+    <string name="theme_mono">Hitam-putih</string>
+    <string name="theme_sepia">Sepia</string>
+    <string name="theme_custom">Kustom (kode hex)</string>
+    <string name="cfg_color_ink">Tinta</string>
+    <string name="cfg_color_paper">Kertas</string>
+    <string name="cfg_color_muted">Teks sekunder</string>
+    <string name="cfg_hex_error">Format: #RRGGBB</string>
+    <string name="cfg_clock_scale">Ukuran jam</string>
+    <string name="cfg_dot_size">Ukuran titik</string>
+    <string name="cfg_date_size">Ukuran tanggal</string>
+    <string name="cfg_show_date">Tanggal</string>
+    <string name="cfg_show_off_dots">Titik mati (matriks samar)</string>
+    <string name="cfg_paper_background">Latar kertas di belakang jam</string>
+    <string name="cfg_bar_height">Tinggi bilah</string>
+    <string name="cfg_border_width">Tebal garis tepi</string>
+    <string name="cfg_g_size">Ukuran huruf G</string>
+    <string name="cfg_icon_size">Ukuran ikon</string>
+    <string name="cfg_show_g">Huruf G</string>
+    <string name="cfg_show_mic">Tombol mikrofon</string>
+    <string name="cfg_show_lens">Tombol Google Lens</string>
+    <string name="cfg_show_divider">Garis pemisah</string>
 </resources>

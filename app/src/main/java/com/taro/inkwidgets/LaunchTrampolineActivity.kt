@@ -10,6 +10,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.AlarmClock
+import android.speech.RecognizerIntent
 
 /**
  * Invisible activity that widgets point their PendingIntents at.
@@ -21,6 +22,7 @@ class LaunchTrampolineActivity : Activity() {
         super.onCreate(savedInstanceState)
         val candidates = when (intent?.action) {
             ACTION_OPEN_LENS -> lensCandidates() + searchCandidates()
+            ACTION_OPEN_VOICE -> voiceCandidates() + searchCandidates()
             ACTION_OPEN_CLOCK -> clockCandidates()
             else -> searchCandidates()
         }
@@ -38,6 +40,12 @@ class LaunchTrampolineActivity : Activity() {
         { packageManager.getLaunchIntentForPackage(LENS_APP) },
         { Intent().setComponent(ComponentName(GOOGLE_APP, LENS_ACTIVITY)) },
         { Intent(Intent.ACTION_VIEW, Uri.parse("googleapp://lens")) },
+    )
+
+    private fun voiceCandidates(): List<() -> Intent?> = listOf<() -> Intent?>(
+        { Intent(RecognizerIntent.ACTION_WEB_SEARCH).setPackage(GOOGLE_APP) },
+        { Intent(RecognizerIntent.ACTION_WEB_SEARCH) },
+        { Intent(Intent.ACTION_VOICE_COMMAND) },
     )
 
     private fun clockCandidates(): List<() -> Intent?> = listOf<() -> Intent?>(
@@ -61,6 +69,7 @@ class LaunchTrampolineActivity : Activity() {
     companion object {
         const val ACTION_OPEN_SEARCH = "com.taro.inkwidgets.action.OPEN_SEARCH"
         const val ACTION_OPEN_LENS = "com.taro.inkwidgets.action.OPEN_LENS"
+        const val ACTION_OPEN_VOICE = "com.taro.inkwidgets.action.OPEN_VOICE"
         const val ACTION_OPEN_CLOCK = "com.taro.inkwidgets.action.OPEN_CLOCK"
 
         private const val GOOGLE_APP = "com.google.android.googlequicksearchbox"
