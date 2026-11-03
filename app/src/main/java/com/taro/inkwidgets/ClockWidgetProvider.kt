@@ -34,10 +34,6 @@ class ClockWidgetProvider : AppWidgetProvider() {
         updateWidget(context, appWidgetManager, appWidgetId)
     }
 
-    override fun onDeleted(context: Context, appWidgetIds: IntArray) {
-        SettingsStore.deleteClock(context, appWidgetIds)
-    }
-
     override fun onEnabled(context: Context) {
         scheduleNextTick(context)
     }
@@ -96,7 +92,7 @@ class ClockWidgetProvider : AppWidgetProvider() {
                 DEFAULT_HEIGHT_DP
             )
             val now = Calendar.getInstance()
-            val settings = SettingsStore.loadClock(context, appWidgetId)
+            val settings = SettingsStore.loadClock(context)
             val bitmap = ClockRenderer.render(widthPx, heightPx, now, settings)
 
             val views = RemoteViews(context.packageName, R.layout.widget_clock).apply {

@@ -2,36 +2,56 @@
 <resources>
     <string name="app_name">InkWidgets</string>
 
+    <!-- Widgets (picker labels, accessibility) -->
     <string name="clock_widget_label">Jam Dot-Matrix</string>
     <string name="clock_widget_description">Jam 24 jam bergaya matriks titik e-ink dengan tanggal.</string>
     <string name="clock_content_description">Jam. Ketuk untuk membuka aplikasi Jam.</string>
     <string name="preview_date">SEL 3 NOV</string>
-
-    <string name="search_widget_label">Pencarian Google</string>
+    <string name="search_widget_label">Search Bar</string>
     <string name="search_widget_description">Bilah pencarian Google ramping dengan tombol suara dan Google Lens.</string>
     <string name="search_content_description">Cari dengan Google</string>
+    <string name="mic_content_description">Penelusuran suara Google</string>
     <string name="lens_content_description">Buka Google Lens</string>
     <string name="search_g" translatable="false">G</string>
 
-    <string name="main_subtitle">Dua widget layar utama bergaya e-ink: jam dot-matrix dan bilah pencarian Google.</string>
-    <string name="main_add_title">Cara menambah widget</string>
-    <string name="main_add_steps">1. Kembali ke layar utama, lalu tekan lama area kosong.\n2. Ketuk \"Widget\".\n3. Cari \"InkWidgets\", lalu tekan lama dan seret \"Jam Dot-Matrix\" atau \"Pencarian Google\" ke layar.\n4. Tekan lama widget untuk mengubah ukurannya.</string>
-    <string name="main_battery_title">Agar jam selalu tepat di MIUI</string>
-    <string name="main_battery_body">MIUI sering menghentikan aplikasi di latar belakang sehingga jam bisa berhenti berganti menit. Buka pengaturan aplikasi, lalu:\n• aktifkan \"Mulai otomatis\"\n• Penghemat baterai → pilih \"Tanpa batasan\"</string>
-    <string name="main_open_settings">Buka pengaturan aplikasi</string>
-    <string name="main_footer">Tanpa internet, tanpa iklan.</string>
-    <string name="mic_content_description">Penelusuran suara Google</string>
+    <!-- Bottom navigation -->
+    <string name="tab_widgets">Widget</string>
+    <string name="tab_customize">Kustomisasi</string>
+    <string name="tab_settings">Pengaturan</string>
 
-    <!-- Main screen: widget list -->
-    <string name="main_configure_title">Atur tampilan widget</string>
-    <string name="main_configure_empty">Belum ada widget InkWidgets di layar utama. Tambahkan dulu, lalu kembali ke sini.</string>
-    <string name="main_configure_widget">Atur %1$s #%2$d</string>
+    <!-- Tab: Widget -->
+    <string name="widgets_title">Widget</string>
+    <string name="widgets_subtitle">Dua widget layar utama bergaya e-ink. Pratinjau di bawah sama persis dengan yang tampil di layar utama.</string>
+    <string name="widgets_clock_description">Jam 24 jam dari titik 5×7, dengan tanggal. Ketuk jam untuk membuka aplikasi Jam.</string>
+    <string name="widgets_search_description">Ketuk bilah untuk Google Search, mikrofon untuk pencarian suara, kamera untuk Google Lens.</string>
+    <string name="widgets_count_none">Belum terpasang</string>
+    <string name="widgets_count_some">%1$d terpasang</string>
+    <string name="widgets_add">Tambah ke layar utama</string>
+    <string name="widgets_customize">Kustomisasi</string>
+    <string name="widgets_manual">Cara manual</string>
+    <string name="widgets_pin_requested">Konfirmasi di layar utama untuk menambahkan widget.</string>
 
-    <!-- Settings screens -->
-    <string name="clock_config_title">Atur Jam</string>
-    <string name="search_config_title">Atur Pencarian</string>
-    <string name="cfg_dark_backdrop">Pratinjau di latar gelap</string>
-    <string name="cfg_save">Simpan</string>
+    <!-- Manual add bottom sheet -->
+    <string name="manual_title">Tambah widget secara manual</string>
+    <string name="manual_intro">Launcher ini tidak mendukung penambahan widget langsung dari aplikasi (sering terjadi di MIUI). Ikuti langkah berikut:</string>
+    <string name="manual_step_1">Kembali ke layar utama.</string>
+    <string name="manual_step_2">Tekan lama area kosong (atau cubit layar).</string>
+    <string name="manual_step_3">Ketuk \"Widget\", lalu cari \"InkWidgets\".</string>
+    <string name="manual_step_4">Tekan lama \"%1$s\", lalu seret ke layar utama.</string>
+    <string name="manual_step_5">Tekan lama widget untuk mengubah ukurannya.</string>
+    <string name="manual_close">Mengerti</string>
+
+    <!-- Tab: Kustomisasi -->
+    <string name="customize_title">Kustomisasi</string>
+    <string name="customize_tab_clock">Jam</string>
+    <string name="customize_tab_search">Search</string>
+    <string name="customize_dark_preview">Pratinjau di latar gelap</string>
+    <string name="customize_reset">Reset ke default</string>
+    <string name="customize_apply">Terapkan</string>
+    <string name="customize_unapplied">Ada perubahan yang belum diterapkan.</string>
+    <string name="customize_applied">Diterapkan ke %1$d widget.</string>
+    <string name="customize_applied_none">Tersimpan. Akan dipakai saat widget ditambahkan.</string>
+
     <string name="cfg_section_color">Warna</string>
     <string name="cfg_section_size">Ukuran</string>
     <string name="cfg_section_elements">Tampilkan</string>
@@ -43,6 +63,7 @@
     <string name="cfg_color_ink">Tinta</string>
     <string name="cfg_color_paper">Kertas</string>
     <string name="cfg_color_muted">Teks sekunder</string>
+    <string name="cfg_custom_note">Titik mati jam memakai warna tinta dengan transparansi 12%.</string>
     <string name="cfg_hex_error">Format: #RRGGBB</string>
     <string name="cfg_clock_scale">Ukuran jam</string>
     <string name="cfg_dot_size">Ukuran titik</string>
@@ -58,4 +79,23 @@
     <string name="cfg_show_mic">Tombol mikrofon</string>
     <string name="cfg_show_lens">Tombol Google Lens</string>
     <string name="cfg_show_divider">Garis pemisah</string>
+
+    <!-- Tab: Pengaturan -->
+    <string name="settings_title">Pengaturan</string>
+    <string name="settings_update_title">Agar widget selalu update</string>
+    <string name="settings_update_body">MIUI sering menghentikan aplikasi di latar belakang sehingga jam bisa berhenti berganti menit. Buka detail aplikasi, aktifkan \"Mulai otomatis\", lalu atur Penghemat baterai ke \"Tanpa batasan\".</string>
+    <string name="settings_open_app_details">Buka detail aplikasi</string>
+    <string name="settings_exact_alarm">Alarm tepat waktu</string>
+    <string name="settings_exact_alarm_allowed">Diizinkan</string>
+    <string name="settings_exact_alarm_denied">Belum diizinkan</string>
+    <string name="settings_exact_alarm_allowed_hint">Jam berganti tepat di awal setiap menit.</string>
+    <string name="settings_exact_alarm_denied_hint">Tanpa izin ini jam bisa terlambat beberapa detik sampai menit.</string>
+    <string name="settings_open_alarm_settings">Buka pengaturan alarm</string>
+    <string name="settings_refresh_all">Perbarui semua widget sekarang</string>
+    <string name="settings_refreshed">%1$d widget diperbarui.</string>
+    <string name="settings_about_title">Tentang</string>
+    <string name="settings_version">Versi %1$s</string>
+    <string name="settings_made_by">Dibuat oleh Taro</string>
+    <string name="settings_offline">Tanpa internet, tanpa iklan.</string>
+    <string name="settings_github">Kode sumber di GitHub →</string>
 </resources>

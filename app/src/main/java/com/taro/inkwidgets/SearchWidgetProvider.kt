@@ -29,10 +29,6 @@ class SearchWidgetProvider : AppWidgetProvider() {
         updateWidget(context, appWidgetManager, appWidgetId)
     }
 
-    override fun onDeleted(context: Context, appWidgetIds: IntArray) {
-        SettingsStore.deleteSearch(context, appWidgetIds)
-    }
-
     companion object {
         const val DEFAULT_WIDTH_DP = 250
         const val DEFAULT_HEIGHT_DP = 56
@@ -50,7 +46,7 @@ class SearchWidgetProvider : AppWidgetProvider() {
         }
 
         private fun updateWidget(context: Context, manager: AppWidgetManager, appWidgetId: Int) {
-            val settings = SettingsStore.loadSearch(context, appWidgetId)
+            val settings = SettingsStore.loadSearch(context)
             val (widthPx, heightPx) = WidgetSize.px(
                 context,
                 manager.getAppWidgetOptions(appWidgetId),
