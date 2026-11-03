@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">InkWidgets</string>
+
+    <string name="clock_widget_label">Jam Dot-Matrix</string>
+    <string name="clock_widget_description">Jam 24 jam bergaya matriks titik e-ink dengan tanggal.</string>
+    <string name="clock_content_description">Jam. Ketuk untuk membuka aplikasi Jam.</string>
+    <string name="preview_date">SEL 3 NOV</string>
+
+    <string name="search_widget_label">Pencarian Google</string>
+    <string name="search_widget_description">Bilah pencarian Google dengan tombol Google Lens.</string>
+    <string name="search_content_description">Cari dengan Google</string>
+    <string name="lens_content_description">Buka Google Lens</string>
+    <string name="search_g" translatable="false">G</string>
+
+    <string name="main_subtitle">Dua widget layar utama bergaya e-ink: jam dot-matrix dan bilah pencarian Google.</string>
+    <string name="main_add_title">Cara menambah widget</string>
+    <string name="main_add_steps">1. Kembali ke layar utama, lalu tekan lama area kosong.\n2. Ketuk \"Widget\".\n3. Cari \"InkWidgets\", lalu tekan lama dan seret \"Jam Dot-Matrix\" atau \"Pencarian Google\" ke layar.\n4. Tekan lama widget untuk mengubah ukurannya.</string>
+    <string name="main_battery_title">Agar jam selalu tepat di MIUI</string>
+    <string name="main_battery_body">MIUI sering menghentikan aplikasi di latar belakang sehingga jam bisa berhenti berganti menit. Buka pengaturan aplikasi, lalu:\n• aktifkan \"Mulai otomatis\"\n• Penghemat baterai → pilih \"Tanpa batasan\"</string>
+    <string name="main_open_settings">Buka pengaturan aplikasi</string>
+    <string name="main_footer">Tanpa internet, tanpa iklan.</string>
+</resources>

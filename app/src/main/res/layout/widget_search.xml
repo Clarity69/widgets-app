@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent"
+    android:paddingHorizontal="4dp"
+    android:paddingVertical="6dp">
+
+    <LinearLayout
+        android:id="@+id/search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@drawable/search_capsule"
+        android:contentDescription="@string/search_content_description"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="20dp"
+        android:paddingEnd="6dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+            android:includeFontPadding="false"
+            android:importantForAccessibility="no"
+            android:text="@string/search_g"
+            android:textColor="@color/ink"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="@dimen/divider_width"
+            android:layout_height="24dp"
+            android:layout_marginEnd="4dp"
+            android:background="@color/ink"
+            android:importantForAccessibility="no" />
+
+        <ImageView
+            android:id="@+id/lens_button"
+            android:layout_width="44dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/icon_ripple"
+            android:contentDescription="@string/lens_content_description"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_lens_camera" />
+
+    </LinearLayout>
+
+</FrameLayout>

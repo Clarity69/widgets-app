@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- E-ink palette. No other colours are used anywhere in the app. -->
+    <color name="ink">#111111</color>
+    <color name="paper">#F4F1EA</color>
+    <color name="muted">#5A5A5A</color>
+    <!-- Ink at ~12% alpha (0x1F / 0xFF = 12.2%). -->
+    <color name="dot_off">#1F111111</color>
+    <color name="transparent">#00000000</color>
+</resources>

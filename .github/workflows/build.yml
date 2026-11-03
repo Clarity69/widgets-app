@@ -1,0 +1,53 @@
+name: Build APK
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17 (Temurin)
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+        with:
+          packages: "platform-tools platforms;android-35 build-tools;35.0.0"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.14.3"
+
+      - name: Prepare Gradle wrapper
+        run: |
+          chmod +x gradlew || true
+          if [ ! -f gradle/wrapper/gradle-wrapper.jar ] || ! ./gradlew --version; then
+            echo "Wrapper missing or broken - regenerating with Gradle 8.14.3"
+            gradle wrapper --gradle-version 8.14.3 --distribution-type bin
+            chmod +x gradlew
+          fi
+
+      - name: Build debug APK
+        run: ./gradlew assembleDebug --stacktrace
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: InkWidgets-apk
+          path: app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.InkWidgets" parent="Base.Theme.InkWidgets">
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
+</resources>

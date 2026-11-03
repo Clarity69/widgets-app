@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Static preview for launchers before Android 12 (previewImage). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="250dp"
+    android:height="48dp"
+    android:viewportWidth="250"
+    android:viewportHeight="48">
+    <!-- Capsule -->
+    <path
+        android:fillColor="@color/paper"
+        android:pathData="M24,5H226A19,19 0,0 1,226 43H24A19,19 0,0 1,24 5Z"
+        android:strokeWidth="2"
+        android:strokeColor="@color/ink" />
+    <!-- "G" -->
+    <path
+        android:pathData="M33.4,17.6A8.5,8.5 0,1 0,35.5 24H28"
+        android:strokeWidth="3"
+        android:strokeColor="@color/ink"
+        android:strokeLineCap="square" />
+    <!-- Divider -->
+    <path
+        android:pathData="M199,14V34"
+        android:strokeWidth="1"
+        android:strokeColor="@color/ink" />
+    <!-- Camera -->
+    <group
+        android:translateX="208"
+        android:translateY="12">
+        <path
+            android:pathData="M4,8H7.5L9,6H15L16.5,8H20A1,1 0,0 1,21 9V18A1,1 0,0 1,20 19H4A1,1 0,0 1,3 18V9A1,1 0,0 1,4 8Z"
+            android:strokeWidth="2"
+            android:strokeColor="@color/ink"
+            android:strokeLineJoin="round" />
+        <path
+            android:pathData="M8.5,13.5A3.5,3.5 0,1 0,15.5 13.5A3.5,3.5 0,1 0,8.5 13.5Z"
+            android:strokeWidth="2"
+            android:strokeColor="@color/ink" />
+    </group>
+</vector>
